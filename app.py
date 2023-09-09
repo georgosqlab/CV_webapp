@@ -1,11 +1,12 @@
 import requests
 import streamlit as st
-from (streamlit_lottie) import st_lottie
+from streamlit_lottie import st_lottie
+import json
 from PIL import Image
 
 
-# Find more emojis here: https://www.webfx.com/tools/emoji-cheat-sheet/
-st.set_page_config(page_title="My Webpage", page_icon=":tada:", layout="wide")
+# Find more emocjis here: https://www.webfx.com/tools/emoji-cheat-sheet/
+st.set_page_config(page_title="georgios_orfanidis", page_icon="random:", layout="wide")
 
 
 def load_lottieurl(url):
@@ -24,82 +25,75 @@ def local_css(file_name):
 local_css("style/style.css")
 
 # ---- LOAD ASSETS ----
-lottie_coding = load_lottieurl("https://assets5.lottiefiles.com/packages/lf20_fcfjwiyb.json")
-img_contact_form = Image.open("images/yt_contact_form.png")
-img_lottie_animation = Image.open("images/yt_lottie_animation.png")
+#lottie_coding = load_lottieurl("https://assets5.lottiefiles.com/packages/lf20_fcfjwiyb.json")
+with open("animation_datascience.json", "r") as f:
+    lottie_coding = json.load(f)
+#img_contact_form = Image.open("images/yt_contact_form.png")
+#img_lottie_animation = Image.open("images/yt_lottie_animation.png")
 
 # ---- HEADER SECTION ----
 with st.container():
-    st.subheader("Hi, I am Sven :wave:")
-    st.title("A Data Analyst From Germany")
+    image = Image.open('me.png')
+    col1, col2, col3 = st.columns(3)
+    with col1:
+        st.title("Georgios Orfanidis")
+    with col3:
+        st.image(image, caption='', width=200)
+    #st.subheader("CV")
+
     st.write(
-        "I am passionate about finding ways to use Python and VBA to be more efficient and effective in business settings."
+        """
+        As a dedicated mathematician with a profound passion for Quantitative Risk Analysis and Data Science,
+         I bring a dynamic blend of analytical prowess and innovation to the table. My professional journey 
+         has been driven by a relentless curiosity for unraveling complex problems and translating data into 
+         actionable insights. In addition to my work in the field, I invest my free time backtesting various 
+         investment strategies and leveraging the power of Python to automate processes. With a strong 
+         foundation in mathematics and a commitment to continuous learning, I am poised to contribute my 
+         expertise to challenging projects and further advance the realm of data-driven decision-making.
+        """
     )
-    st.write("[Learn More >](https://pythonandvba.com)")
+    st.write("[Learn more about my projects >](https://github.com/georgosqlab)")
+
 
 # ---- WHAT I DO ----
 with st.container():
     st.write("---")
     left_column, right_column = st.columns(2)
     with left_column:
-        st.header("What I do")
+        st.header("What I can  do:")
         st.write("##")
         st.write(
             """
-            On my YouTube channel I am creating tutorials for people who:
-            - are looking for a way to leverage the power of Python in their day-to-day work.
-            - are struggling with repetitive tasks in Excel and are looking for a way to use Python and VBA.
-            - want to learn Data Analysis & Data Science to perform meaningful and impactful analyses.
-            - are working with Excel and found themselves thinking - "there has to be a better way."
+            By leveraging the computer power of languages like Python, I can assist companies or 
+            individuals with:
+            - Quantitative Risk Analysis: Offering data-driven risk assessments and modeling to enhance decision-making 
+            and mitigate potential financial pitfalls.
+            - Data Science Solutions: Providing data analysis, predictive modeling, and actionable insights to help 
+            businesses harness the full potential of their data.
+            - Investment Strategy Optimization: Backtesting and fine-tuning investment strategies, optimizing 
+            portfolios, and identifying opportunities for maximizing returns while minimizing risks.
+            - Process Automation: Streamlining workflows and automating repetitive tasks, improving efficiency and 
+            freeing up valuable time and resources.
+            - Machine Learning Applications: Building machine learning models for predictive analytics, 
+            natural language processing, image recognition, and more.
 
-            If this sounds interesting to you, consider subscribing and turning on the notifications, so you don’t miss any content.
+            If this rings a bell to you, feel free to get in touch with me.
             """
         )
-        st.write("[YouTube Channel >](https://youtube.com/c/CodingIsFun)")
+        st.write("[LinkedIn profile >](https://www.linkedin.com/in/georgios-orfanidis-aa797a10a/)")
     with right_column:
         st_lottie(lottie_coding, height=300, key="coding")
 
-# ---- PROJECTS ----
-with st.container():
-    st.write("---")
-    st.header("My Projects")
-    st.write("##")
-    image_column, text_column = st.columns((1, 2))
-    with image_column:
-        st.image(img_lottie_animation)
-    with text_column:
-        st.subheader("Integrate Lottie Animations Inside Your Streamlit App")
-        st.write(
-            """
-            Learn how to use Lottie Files in Streamlit!
-            Animations make our web app more engaging and fun, and Lottie Files are the easiest way to do it!
-            In this tutorial, I'll show you exactly how to do it
-            """
-        )
-        st.markdown("[Watch Video...](https://youtu.be/TXSOitGoINE)")
-with st.container():
-    image_column, text_column = st.columns((1, 2))
-    with image_column:
-        st.image(img_contact_form)
-    with text_column:
-        st.subheader("How To Add A Contact Form To Your Streamlit App")
-        st.write(
-            """
-            Want to add a contact form to your Streamlit website?
-            In this video, I'm going to show you how to implement a contact form in your Streamlit app using the free service ‘Form Submit’.
-            """
-        )
-        st.markdown("[Watch Video...](https://youtu.be/FOULV9Xij_8)")
 
 # ---- CONTACT ----
 with st.container():
     st.write("---")
-    st.header("Get In Touch With Me!")
+    #st.header("Get In Touch With Me!")
     st.write("##")
 
     # Documention: https://formsubmit.co/ !!! CHANGE EMAIL ADDRESS !!!
     contact_form = """
-    <form action="https://formsubmit.co/YOUR@MAIL.COM" method="POST">
+    <form action="https://formsubmit.co/georgeorfa90@gmail.com" method="POST">
         <input type="hidden" name="_captcha" value="false">
         <input type="text" name="name" placeholder="Your name" required>
         <input type="email" name="email" placeholder="Your email" required>
