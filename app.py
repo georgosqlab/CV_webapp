@@ -1,6 +1,8 @@
 import requests
 import streamlit as st
+import typing
 from typing_extensions import Literal
+from typing import Literal
 from streamlit_lottie import st_lottie
 import json
 from PIL import Image
