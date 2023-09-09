@@ -1,9 +1,6 @@
 import requests
 import streamlit as st
-import typing
-from typing_extensions import Literal
-from typing import Literal
-from streamlit_lottie import st_lottie
+#from streamlit_lottie import st_lottie
 import json
 from PIL import Image
 
@@ -31,6 +28,7 @@ local_css("style/style.css")
 #lottie_coding = load_lottieurl("https://assets5.lottiefiles.com/packages/lf20_fcfjwiyb.json")
 with open("animation_datascience.json", "r") as f:
     lottie_coding = json.load(f)
+animation_path = "animation_data.gif"
 #img_contact_form = Image.open("images/yt_contact_form.png")
 #img_lottie_animation = Image.open("images/yt_lottie_animation.png")
 
@@ -85,7 +83,9 @@ with st.container():
         )
         st.write("[LinkedIn profile >](https://www.linkedin.com/in/georgios-orfanidis-aa797a10a/)")
     with right_column:
-        st_lottie(lottie_coding, height=300, key="coding")
+        st.image(animation_path, width=250)
+        #st.markdown(f'<iframe src="{lottie_coding}" width="400" height="400"></iframe>', unsafe_allow_html=True)
+        #st_lottie(lottie_coding, height=300, key="coding")
 
 
 # ---- CONTACT ----
